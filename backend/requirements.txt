@@ -1,0 +1,19 @@
+# requirements.txt
+fastapi
+uvicorn[standard]
+pydantic
+langchain
+faiss-cpu
+sentence-transformers
+transformers
+datasets
+pillow
+pytesseract
+onnxruntime   # optional if using onnx local models
+python-multipart
+requests
+aiohttp
+uvicorn
+python-dotenv
+tqdm
+typing_extensions
