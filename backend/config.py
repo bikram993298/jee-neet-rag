@@ -1,16 +1,20 @@
-# backend/config.py
-from pydantic import BaseSettings
+from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-class Settings(BaseSettings):
-    openai_api_key: str
-    hf_token: str
-    ollama_host: str = "localhost"
-    ollama_port: int = 11434
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
-    faiss_index_dir: str = "./backend/data/faiss_index"
-    device: str = "cpu"  # change to 'cuda' if available
+load_dotenv()
 
-    class Config:
-        env_file = ".env"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# Use GEMINI_MODEL env var now (default left as a placeholder). Set this in your .env
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.0")
+FAISS_INDEX_PATH = os.getenv("FAISS_INDEX_PATH", "data/embeddings/faiss_index.idx")
+ID_MAP_PATH = os.getenv("ID_MAP_PATH", "data/embeddings/id_to_text.pkl")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 
-settings = Settings()
+HOST = os.getenv("HOST", "0.0.0.0")
+PORT = int(os.getenv("PORT", 8000))
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+EMBED_DIR = DATA_DIR / "embeddings"
+EMBED_DIR.mkdir(parents=True, exist_ok=True)

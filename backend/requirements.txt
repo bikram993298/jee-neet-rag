@@ -1,19 +1,8 @@
-# requirements.txt
 fastapi
 uvicorn[standard]
-pydantic
-langchain
-faiss-cpu
 sentence-transformers
-transformers
-datasets
-pillow
-pytesseract
-onnxruntime   # optional if using onnx local models
-python-multipart
-requests
-aiohttp
-uvicorn
+faiss-cpu
+google-generativeai
 python-dotenv
+pydantic
 tqdm
-typing_extensions
