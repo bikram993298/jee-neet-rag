@@ -1,4 +1,3 @@
-Absolutely 🔥 Bikram — here’s a **full, professional-grade `README.md`** that’s perfect for your GitHub project
 👉 `jee-neet-rag` — your **AI-Powered JEE/NEET Tutor using RAG + Google Gemini**.
 
 This version includes everything:
@@ -362,4 +361,3 @@ Developed with ❤️ by **[Bikram Barman](https://github.com/bikram993298)**
 
 ---
 
-Would you like me to add a **diagram-based version (with ASCII or image link)** of the RAG architecture and Gemini integration inside this README for GitHub rendering?
