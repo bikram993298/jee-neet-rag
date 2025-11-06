@@ -1,160 +1,365 @@
+Absolutely 🔥 Bikram — here’s a **full, professional-grade `README.md`** that’s perfect for your GitHub project
+👉 `jee-neet-rag` — your **AI-Powered JEE/NEET Tutor using RAG + Google Gemini**.
 
-# 📚 Hybrid JEE/NEET Tutor — AI-Powered Exam Prep with RAG + LoRA
+This version includes everything:
 
-A full-stack AI tutor for **JEE** and **NEET** exam preparation using **Retrieval-Augmented Generation (RAG)** over NCERT textbooks, past papers, and benchmark datasets — combined with a **hybrid LLM setup**:  
-- **Local open-source model** for cost-efficient inference  
-- **GPT-4 fallback** for complex queries  
+* Overview of what the project *does*
+* Detailed local setup (backend + frontend)
+* API explanation
+* RAG architecture diagram (in text form)
+* Contribution guide
+* Deployment & environment setup
+* And best practices
 
-Built with **FastAPI**, **LangChain**, **FAISS**, and **React**.
-
----
-
-## 🚀 Features
-
-- **RAG Pipeline** — Chunk, embed, and store NCERT + past paper content in FAISS.
-- **Hybrid LLM Routing** — Offline inference (Ollama / GPT4All) with GPT-4 fallback.
-- **Exam-ready Output** — Step-by-step solutions, MCQs, and concept explanations.
-- **Frontend** — Chat-style React UI with MathJax for LaTeX equations.
-- **Dataset Integration** — Supports [Reja1/jee-neet-benchmark](https://huggingface.co/datasets/Reja1/jee-neet-benchmark) for model evaluation & fine-tuning.
-- **Deployable** — Works locally or in the cloud (Vercel + Render).
+You can copy this directly into your `jee-neet-rag/README.md` file 👇
 
 ---
 
-## 🛠️ Tech Stack
+# 📚 JEE/NEET AI Tutor — RAG + Google Gemini
 
-**Backend:** Python, FastAPI, LangChain, FAISS, Sentence-Transformers, OpenAI API, pytesseract (OCR)  
-**Frontend:** React, MathJax, TailwindCSS  
-**Models:** Local (LLaMA, Mistral, GPT4All) + GPT-4 (fallback)  
-**Dataset:** NCERT PDFs + [Hugging Face Dataset](https://huggingface.co/datasets/Reja1/jee-neet-benchmark)
+> 🧠 An AI-powered tutoring platform built using **Retrieval-Augmented Generation (RAG)** and **Google Gemini API** to help students prepare for **JEE** and **NEET** by answering questions using real NCERT and past paper data.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Overview
+
+**JEE-NEET-RAG** is a full-stack project that combines **AI + Search + Education**.
+It lets students ask questions (theory or numerical) from their syllabus, and the AI answers them with **step-by-step reasoning** based on **NCERT content** and **past paper data**.
+
+The backend uses:
+
+* **FastAPI** + **FAISS** + **Sentence Transformers** for the RAG pipeline.
+  The frontend uses:
+* **React**, **TailwindCSS**, and **Framer Motion** for a modern chat interface.
+
+The AI model is:
+
+* **Google Gemini 1.5 Flash** — free, fast, and intelligent.
+
+---
+
+## 🧠 What the Project Does
+
+Here’s how the system works behind the scenes 👇
+
+### 🧩 Retrieval-Augmented Generation (RAG) Pipeline
 
 ```
+1️⃣ User asks a question (e.g., "Explain Bohr’s model of atom")
+2️⃣ The system retrieves the most relevant text chunks from NCERT using FAISS
+3️⃣ Combines those chunks into a contextual prompt
+4️⃣ Sends the context + question to the Gemini model
+5️⃣ Gemini generates a step-by-step, syllabus-accurate explanation
+6️⃣ Response is displayed beautifully on the frontend
+```
 
-.
-├── README.md
-├── .env.example
-├── backend/
-│   ├── api/
-│   │   ├── main.py
-│   │   ├── routes/
-│   │   │   ├── chat.py
-│   │   │   ├── admin.py
-│   ├── rag/
-│   │   ├── ingest.py
-│   │   ├── retriever.py
-│   │   ├── ocr\_utils.py
-│   │   ├── merge\_embeddings.py
-│   ├── models/
-│   │   ├── local\_llm.py
-│   │   ├── openai\_llm.py
-│   ├── requirements.txt
-│   ├── config.py
-│
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── components/
-│   │   │   ├── ChatBox.jsx
-│   │   │   ├── Message.jsx
-│   │   │   ├── Loader.jsx
-│   │   ├── utils/mathjax.js
-│   ├── package.json
-│   ├── vite.config.js
-│
-├── data/
-│   ├── ncert/
-│   ├── jee\_papers/
-│   ├── neet\_papers/
-│   ├── embeddings/
-│
-└── scripts/
-├── fine\_tune\_lora\_colab.ipynb
-
-````
+This ensures **accurate, syllabus-based** answers instead of random LLM responses.
 
 ---
 
-## ⚡ Quickstart
+## ⚙️ Features
 
-### 1️⃣ Backend Setup
+✅ **RAG Pipeline** — retrieves context from NCERT and past paper data
+✅ **AI Tutor Chatbot** — Chat-style interface for question-answering
+✅ **Gemini API** — Uses Google’s free Gemini API (no OpenAI key required)
+✅ **FAISS Vector DB** — Efficient and local semantic search
+✅ **React UI** — Modern, mobile-friendly chat design
+✅ **Environment-based config** — Works locally or in production easily
+✅ **Easy Dataset Expansion** — Just drop `.txt` files to add new chapters
+
+---
+
+## 🧰 Tech Stack
+
+| Layer          | Technology                                          |
+| -------------- | --------------------------------------------------- |
+| **Frontend**   | React, TailwindCSS, Framer Motion, Lucide Icons     |
+| **Backend**    | FastAPI, Uvicorn, Python 3.10+                      |
+| **AI Model**   | Google Gemini 1.5 Flash (Free via Google AI Studio) |
+| **Vector DB**  | FAISS                                               |
+| **Embeddings** | Sentence Transformers (`all-MiniLM-L6-v2`)          |
+| **Data**       | NCERT + JEE/NEET past papers (as text files)        |
+
+---
+
+## 🛠️ Local Setup Guide
+
+### 🧩 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/bikram993298/jee-neet-rag.git
+cd jee-neet-rag
+```
+
+---
+
+### 🧩 2️⃣ Backend Setup
+
+#### Create a virtual environment
+
 ```bash
 cd backend
-pip install -r requirements.txt
-cp .env.example .env  # Add your API keys
-uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
-````
+python -m venv .venv
+.venv\Scripts\activate     # (on Windows)
+```
 
-### 2️⃣ Frontend Setup
+#### Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+#### `requirements.txt`
+
+```text
+fastapi
+uvicorn[standard]
+sentence-transformers
+faiss-cpu
+google-generativeai
+python-dotenv
+pydantic
+tqdm
+```
+
+#### Create `.env` file inside `backend/`
+
+```ini
+GOOGLE_API_KEY=your_google_api_key_here
+GEMINI_MODEL=models/gemini-2.5-pro
+FAISS_INDEX_PATH=data/embeddings/faiss_index.idx
+ID_MAP_PATH=data/embeddings/id_to_text.pkl
+EMBEDDING_MODEL=all-MiniLM-L6-v2
+HOST=0.0.0.0
+PORT=8000
+```
+
+> 🎯 Get your free API key from:
+> [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+
+---
+
+### 🧩 3️⃣ Prepare Data for RAG
+
+Create folders:
+
+```
+jee-neet-rag/data/ncert/
+```
+
+Add `.txt` files:
+
+```
+data/ncert/physics_ch1.txt
+data/ncert/chemistry_ch1.txt
+```
+
+Each file should contain plain text (you can copy content from NCERT PDFs).
+
+---
+
+### 🧩 4️⃣ Generate FAISS Embeddings
+
+Run:
+
+```bash
+python rag/ingest.py
+```
+
+You’ll see:
+
+```
+Embedding 120 chunks with all-MiniLM-L6-v2 ...
+Building FAISS index...
+Saving index -> data/embeddings/faiss_index.idx
+Saving id->text map -> data/embeddings/id_to_text.pkl
+Done.
+```
+
+---
+
+### 🧩 5️⃣ Start Backend
+
+Run from project root (`jee-neet-rag/`):
+
+```bash
+uvicorn backend.api.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Now open the API docs:
+👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+---
+
+### 🧩 6️⃣ Frontend Setup
+
+Open a new terminal:
 
 ```bash
 cd frontend
-npm install
+npm install --legacy-peer-deps
+npm install framer-motion lucide-react better-react-mathjax
 npm run dev
 ```
 
-### 3️⃣ RAG Indexing
+Open in browser:
+👉 [http://localhost:5173](http://localhost:5173)
 
-```bash
-cd backend
-python rag/ingest.py --source data/ncert
-python rag/ingest.py --source data/jee_papers
-python rag/merge_embeddings.py  # merge NCERT + JEE/NEET
+---
+
+## 📦 Folder Structure
+
+```
+jee-neet-rag/
+├── backend/
+│   ├── api/
+│   │   ├── main.py
+│   │   └── routes/chat.py
+│   ├── rag/
+│   │   ├── ingest.py
+│   │   ├── retriever.py
+│   │   └── merge_embeddings.py
+│   ├── models/
+│   │   └── gemini_llm.py
+│   └── config.py
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ChatBox.jsx
+│   │   │   ├── Message.jsx
+│   │   │   └── Loader.jsx
+│   ├── vite.config.js
+│   └── package.json
+├── data/ncert/
+│   ├── physics_ch1.txt
+│   ├── chemistry_ch1.txt
+└── README.md
 ```
 
 ---
 
-## 🔍 Using the API
+## 🌐 API Endpoints
 
-* **Chat:** `POST /api/chat`
+### `/api/chat` → POST
 
-  ```json
-  {
-    "query": "Explain the Bohr model for hydrogen atom."
-  }
+**Description:** Accepts a query and returns a context-based AI-generated answer.
+
+#### Example Request
+
+```json
+{
+  "query": "Explain Bohr's model of hydrogen atom."
+}
+```
+
+#### Example Response
+
+```json
+{
+  "answer": "According to Bohr's model, electrons revolve in discrete orbits..."
+}
+```
+
+---
+
+## 🧠 RAG Flow Diagram (Text Form)
+
+```
+User Question
+   ↓
+Sentence Transformer → Embedding Vector
+   ↓
+FAISS → Retrieve top 5 relevant chunks
+   ↓
+Combine context + question → Prompt
+   ↓
+Gemini Model → Generate Answer
+   ↓
+Frontend → Display Chat Response
+```
+
+---
+
+## ☁️ Deployment Guide
+
+### 🟢 Deploy Backend (Render)
+
+* Go to [https://render.com](https://render.com)
+* Create a new **Web Service**
+* Connect your GitHub repo
+* Add Environment Variables:
+
   ```
-* **Reindex:** `POST /api/admin/reindex`
+  GEMINI_API_KEY=your_google_api_key_here
+  GEMINI_MODEL=gemini-1.5-flash
+  ```
+
+### 🟣 Deploy Frontend (Vercel)
+
+* Go to [https://vercel.com](https://vercel.com)
+* Import the repo
+* Add:
+
+  ```
+  VITE_API_URL=https://your-backend.onrender.com
+  ```
+* Deploy 🚀
 
 ---
 
-## 📦 Dataset
+## 🤝 Contributing
 
-We integrate [Reja1/jee-neet-benchmark](https://huggingface.co/datasets/Reja1/jee-neet-benchmark):
+Contributions are welcome! 🎉
+To contribute:
 
-* **JEE Advanced 2024**: 102 questions
-* **NEET 2024 (Code T3)**: 200 questions
-* **NEET 2025 (Code 45)**: 180 questions
+1. **Fork** the repository
+2. **Create** a new branch
 
-Each question is stored as `.png` with metadata (exam, subject, type, answer).
+   ```bash
+   git checkout -b feature/my-feature
+   ```
+3. **Commit** your changes
 
----
+   ```bash
+   git commit -m "Added new feature"
+   ```
+4. **Push** to your fork
 
-## 🧪 Fine-tuning LLaMA 2 with LoRA (Google Colab)
+   ```bash
+   git push origin feature/my-feature
+   ```
+5. **Submit a Pull Request**
 
-We provide `scripts/fine_tune_lora_colab.ipynb` with:
+### 💡 Suggestions
 
-1. OCR preprocessing of images → text
-2. Tokenization (LLaMA 2 tokenizer)
-3. LoRA config for low-cost fine-tuning
-4. Model training and saving
-5. Integration back into the RAG pipeline
-
----
-
-## 📌 Notes & Next Steps
-
-1. **Secrets**: Populate `.env` from `.env.example`. Keep secrets out of VCS.
-2. **FAISS Merge**: `merge_embeddings.py` merges NCERT + JEE/NEET embeddings.
-3. **OCR Tuning**: `ocr_utils.py` includes image preprocessing for better accuracy.
-4. **Local LLM**: `local_llm.py` supports Ollama & GPT4All — adapt to your runtime.
-5. **Evaluation**: Scripts in `scripts/` test accuracy on the HF dataset.
-6. **Testing**: Unit tests available for ingestion, retrieval, and inference.
+* Improve RAG retrieval ranking
+* Add support for image-based question answering (Gemini Vision)
+* Enhance UI animations or add dark mode
+* Add quiz/question generator using the RAG database
 
 ---
 
-## 📜 License
+## 🧾 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License © 2025
+Developed with ❤️ by **[Bikram Barman](https://github.com/bikram993298)**
 
+---
+
+## 🌟 Demo Preview (Example)
+
+**Question:**
+
+> “Explain Bohr’s model of the hydrogen atom.”
+
+**Answer (AI):**
+
+> According to Niels Bohr, electrons revolve around the nucleus in stable orbits.
+> The angular momentum is quantized as
+> ( mvr = n \frac{h}{2\pi} ).
+> Energy levels are given by ( E_n = -13.6/n^2 \text{ eV} ).
+> Transitions between levels emit or absorb photons.
+
+---
+
+Would you like me to add a **diagram-based version (with ASCII or image link)** of the RAG architecture and Gemini integration inside this README for GitHub rendering?
