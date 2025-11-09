@@ -1,13 +1,26 @@
-import React from 'react'
-import ChatBox from './components/ChatBox'
+import React from "react";
+import { MathJaxContext } from "better-react-mathjax";
+import ChatBox from "./components/ChatBox";
+
+const mathConfig = {
+  loader: { load: ["input/tex", "output/chtml"] },
+  tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] },
+};
 
 export default function App() {
   return (
-    <div style={{ minHeight: '100vh', padding: 24, background: '#f8fafc' }}>
-      <div style={{ maxWidth: 900, margin: '0 auto', background: '#fff', padding: 20, borderRadius: 12, boxShadow: '0 6px 18px rgba(0,0,0,0.06)' }}>
-        <h1 style={{ fontSize: 22, marginBottom: 12 }}>JEE/NEET Tutor (RAG only)</h1>
+    <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center p-4">
+      <h1 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+        JEE / NEET AI Assistant 🤖
+      </h1>
+
+      <MathJaxContext config={mathConfig}>
         <ChatBox />
-      </div>
+      </MathJaxContext>
+
+      <footer className="mt-6 text-gray-500 text-xs">
+        Built with ❤️ by Bikram Barman
+      </footer>
     </div>
-  )
+  );
 }
