@@ -1,8 +1,10 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
+from typing import Dict, Any
 from backend.rag.retriever import retrieve_context
 from backend.models.gemini_llm import generate_answer
 from backend.utils.query_rewriter import rewrite_followup_question
+from backend.utils.auth import get_current_user
 
 router = APIRouter()
 
@@ -12,7 +14,10 @@ class ChatRequest(BaseModel):
 
 
 @router.post("/chat")
-async def chat(req: ChatRequest):
+async def chat(
+    req: ChatRequest,
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
     history = req.messages
 
     # 🧩 Safety check
